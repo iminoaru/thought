@@ -1,12 +1,12 @@
 
-import { express , Router } from 'express';
+import { Express , Router } from 'express';
 import { PrismaClient } from "@prisma/client";
 import MW from '../middleware';
 
 const prisma = new PrismaClient();
 const app = Router();
 
-app.get('/', MW , async (req, res) => {
+app.post('/', MW , async (req, res) => {
     const text : string = req.body.text
     
     const id = await prisma.thoughts.create({
@@ -25,3 +25,6 @@ app.get('/', MW , async (req, res) => {
     }
 
 })
+
+
+export default app;

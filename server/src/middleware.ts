@@ -1,17 +1,17 @@
-import bcrypt from 'bcrypt';
-import dotenv from 'dotenv';
+const bcrypt = require('bcrypt');
+const dotenv = require('dotenv');
 dotenv.config();
 
 const MW = (req: any, res: any, next: any) => {
     
-    const secret = req.headers.secret;
+    const secret : string = req.headers.secret;
 
     if (!secret) {
         res.status(401).send({ message: 'No secret found in request headers' });
         return;
     }
 
-    if (bcrypt.compare(process.env.KEY , secret as string)) {
+    if (secret + 'gg' === process.env.KEY) {
         next();
     } else {
         res.status(401).send({ message: 'Invalid secret' });
