@@ -26,7 +26,7 @@ app.get('/filter' , async (req , res) => {
     const startDate : string = Array.isArray(req.query.from) ? (req.query.from[0] as string) : (req.query.from as string) || "";
     const endDate: string = Array.isArray(req.query.to) ? (req.query.to[0] as string) : (req.query.to as string) || ""
 
-    const filteredText = prisma.thoughts.findMany({
+    const filteredText = await prisma.thoughts.findMany({
         where: {
             time : {
                 lte: new Date(endDate).toISOString(), 
@@ -39,6 +39,8 @@ app.get('/filter' , async (req , res) => {
         }
         
     })
+
+    res.status(200).send(filteredText)
 })
 
 
