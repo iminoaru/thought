@@ -5,7 +5,7 @@ export const Add = () => {
 
     const handleSubmit = async () => {
         try{
-            const res : object = await axios.post('https://localhost:3001/add' , 
+            await axios.post('http://localhost:3001/add' , 
             {
                 text : input    
             }, {
@@ -16,6 +16,7 @@ export const Add = () => {
             alert('added task')
         } catch(err) {
             alert('error came')
+            console.log(err)
         }
         
     }
