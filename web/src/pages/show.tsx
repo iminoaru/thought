@@ -7,6 +7,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import {format} from 'date-fns/format'
 import Card from "../components/card";
+import { Link } from "react-router-dom";
 
 
 
@@ -33,7 +34,6 @@ export const Show = () => {
                     setText(Object.values(res.data || {}) || []); //help taken
     
                     
-                    alert('showing');
                 } catch (err) {
                     alert('error came');
                     console.log(err);
@@ -86,6 +86,10 @@ export const Show = () => {
       }
     return(
         <>
+            <Link to="/add">
+                <button> 📝 </button>
+            </Link>
+            <br/>
             <button onClick={() => setShowDatebox(!showDatebox)}> pick date </button>
 
             {showDatebox &&<DateRangePicker 

@@ -12,7 +12,12 @@ app.get('/' , MW , async (req, res) => {
         select: {
             text: true,
             time: true
-        }
+        },
+        orderBy: [
+            {
+              id: 'desc'
+            }
+          ]
     });
     if(textList){
         res.status(200).send(textList)
@@ -33,6 +38,11 @@ app.get('/filter' , async (req , res) => {
                 gte: new Date(startDate).toISOString()
               }
         },
+        orderBy: [
+            {
+              id: 'desc'
+            }
+          ],
         select: {
             text : true,
             time : true
