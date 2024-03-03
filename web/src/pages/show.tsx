@@ -1,11 +1,11 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState} from "react"
 import axios  from 'axios'
 
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import { DateRangePicker } from 'react-date-range';
-import {format} from 'date-fns/format'
+import format from 'date-fns/format';
 import Card from "../components/card";
 import { Link } from "react-router-dom";
 
@@ -66,7 +66,7 @@ export const Show = () => {
             }, []);
         }
     
-    const handleDateChange = async (newDates) => {
+    const handleDateChange = async (newDates : any) => {
         console.log(newDates)
         const newStartDate = newDates.selection.startDate;
         const newEndDate = newDates.selection.endDate;
@@ -97,11 +97,11 @@ export const Show = () => {
                 onChange = {handleDateChange}
             />}
 
-            {text.map((item, index) => (
+            {text.map((item: { text: string, time: string }, index: number) => (
                 <div key={index}>
-                  <Card text = {item.text} dateTime = {item.time} />
+                    <Card text={item.text} dateTime={item.time} />
                 </div>
-              ))}  
+            ))}
         
         </>
     )
